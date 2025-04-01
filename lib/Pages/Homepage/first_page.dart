@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sneaker_store_app/Pages/Homepage/products_display.dart';
+import 'package:sneaker_store_app/common/products_display.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard({super.key});

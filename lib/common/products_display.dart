@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sneaker_store_app/Pages/Homepage/home_products.dart';
-import 'package:sneaker_store_app/Pages/Homepage/product_cardwidget.dart';
+import 'package:sneaker_store_app/Pages/Homepage/widgets/home_products.dart';
+import 'package:sneaker_store_app/Pages/Homepage/widgets/product_cardwidget.dart';
 
 class ProductsDisplay extends StatefulWidget {
   const ProductsDisplay({super.key});

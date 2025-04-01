@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sneaker_store_app/Widgets/userOnboarding/splashscreen.dart';
-import 'package:sneaker_store_app/State_Management/state_management.dart';
+import 'package:sneaker_store_app/controllers/state_management.dart';
 import '../firebase_options.dart';
 
 

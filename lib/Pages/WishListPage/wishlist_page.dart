@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sneaker_store_app/Pages/OtherPages/product_page.dart';
+import 'package:sneaker_store_app/common/product_page.dart';
 import 'package:sneaker_store_app/main/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
