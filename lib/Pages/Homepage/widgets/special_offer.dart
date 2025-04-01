@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ press: () {},
 SpecialOfferCard(
 image: "images/footwears/2002r.png",
 category: "Athletic",
-numOfBrands: 24,
+numOfBrands: 5,
 press: () {},
 ),
 const SizedBox(width: 20),

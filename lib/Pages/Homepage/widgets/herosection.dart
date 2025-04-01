@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -12,16 +13,39 @@ class HeroSection extends StatefulWidget {
 }
 
 class _HeroSectionState extends State<HeroSection> {
-  final PageController _controller = PageController();
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+int _currentPage = 0;
+late Timer timer;
+final PageController _controller = PageController();
+ 
+@override
+  void initState() {
+super.initState();
+_startAutoScroll();
+}
+
+void _startAutoScroll() {
+ timer = Timer.periodic( const Duration(seconds: 4), (timer) {
+if (_currentPage < products.length - 1) {
+ _currentPage++;
+} else {
+_currentPage = 0; // Reset to first page
+}
+ _controller.animateToPage(
+_currentPage, duration: const Duration(milliseconds: 500),
+curve: Curves.easeInOut,
+);
+});
   }
 
-  @override
-  Widget build(BuildContext context) {
-    List<Map<String, dynamic>> products = [
+ @override
+  void dispose() {
+timer.cancel();
+_controller.dispose();
+super.dispose();
+  }
+
+
+List<Map<String, dynamic>> products = [
       {
         'imageUrl': 'images/footwears/nikebanner.png',
         'brand' : 'Nike',
@@ -47,30 +71,36 @@ class _HeroSectionState extends State<HeroSection> {
         'logo': 'images/icons/newbalance_logo.png'
       },
     ];
+  @override
+  Widget build(BuildContext context) {
+    
     return Column(
-      children: [
-        SizedBox(
-          height: 210, width: double.infinity,
-          child: productBanner(products),
-        ),
-        const SizedBox(height: 10),
-        SmoothPageIndicator(
-          controller: _controller,
-          count: products.length,
-          effect: const ExpandingDotsEffect(
-            dotHeight: 8,
-            dotWidth: 8,
-            activeDotColor: Colors.blue,
-            dotColor: Colors.grey,
-          ),
+children: [
+SizedBox(
+height: 210, width: double.infinity, child: productBanner(products),
+),
+
+const SizedBox(height: 10),
+SmoothPageIndicator(
+controller: _controller,
+count: products.length,
+effect: const ExpandingDotsEffect(
+dotHeight: 8, dotWidth: 8,
+activeDotColor: Colors.blue,
+dotColor: Colors.grey,
+),
         ),
       ],
     );
   }
 
-  PageView productBanner(List<Map<String, dynamic>> products) {
+PageView productBanner(List<Map<String, dynamic>> products) {
 return PageView.builder(
-itemCount: products.length, controller: _controller,
+itemCount: products.length, controller: _controller, onPageChanged: (index) {
+setState(() {
+_currentPage = index;
+});
+},
 itemBuilder: (context, index) {
 final bannerInfo = products[index];
 return BackdropFilter(

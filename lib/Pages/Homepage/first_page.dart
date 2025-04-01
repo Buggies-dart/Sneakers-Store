@@ -15,7 +15,7 @@ class _ProductCardState extends State<ProductCard> {
 
  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+return Scaffold(
 appBar: AppBar(
 title: Text(
 'Discover',
@@ -25,7 +25,7 @@ centerTitle: false,
 actions: [
 IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))
 ],
-      ),
+),
 body: Padding(
 padding: const EdgeInsets.only(top: 10),
 child: Column(children: [
@@ -61,7 +61,6 @@ fontSize: 15)),
 );
  }
 
- 
 }
 
 
