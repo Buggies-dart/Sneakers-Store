@@ -98,35 +98,41 @@ class _SignupState extends State<Signup> {
 ),
  Row( mainAxisAlignment: MainAxisAlignment.center,
   children: [
-    smSignupIcon(MdiIcons.google, googleAuth),
-    smSignupIcon(Icons.facebook, (){}),
-    smSignupIcon(MdiIcons.cellphone, (){})
-       
-       ]),
+smSignupIcon(MdiIcons.google, googleAuth),
+smSignupIcon(Icons.facebook, (){}),
+smSignupIcon(MdiIcons.cellphone, (){})
+]),
   
-     Row( children: [ const SizedBox( width: 50,),
-      const Text('Do you already have an account?', style: TextStyle(fontSize: 15),),
-    TextButton(onPressed: (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){ return
-        const Login();
-      }));
-    }, child: const Text('Sign in',)) ],)]
-      )
-      )
-    );
+Row( children: [ const SizedBox( width: 50,),
+const Text('Do you already have an account?', style: TextStyle(fontSize: 15),),
+TextButton(onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){ return
+const Login();
+}));
+}, child: const Text('Sign in',)) ],)]
+)
+)
+);
   }
 
-  Widget signupFields(String data, TextEditingController controller) {
-    return Padding( padding: const EdgeInsets.only( right: 30, left: 30, bottom: 15),
-      child: TextField( controller: controller,
-          decoration: InputDecoration( filled: true, fillColor: Colors.white,
-           hintText: data, contentPadding: const EdgeInsets.all(12),
-           focusedBorder: const OutlineInputBorder( borderSide: BorderSide.none),
-           border: const OutlineInputBorder( borderSide: BorderSide.none)
-          ),
-        ),
-    );
+ Widget signupFields(String data, TextEditingController controller) {
+bool isPassword = data == 'Password';
+
+return Padding( padding: const EdgeInsets.only( right: 30, left: 30, bottom: 15),
+child: TextField( controller: controller, obscureText: isPassword? obscureText : false,
+decoration: InputDecoration( filled: true, fillColor: Colors.white, 
+suffixIcon: isPassword? IconButton(onPressed: (){
+setState(() {
+obscureText = !obscureText;
+});
+}, icon:  Icon( obscureText == true ? Icons.visibility_off: Icons.visibility)): null,
+hintText: data, contentPadding: const EdgeInsets.all(12), 
+focusedBorder: const OutlineInputBorder( borderSide: BorderSide.none),
+border: const OutlineInputBorder( borderSide: BorderSide.none)
+),
+),
+);
   }
+
   Widget smSignupIcon(IconData icon, VoidCallback onTap){
     return IconButton(onPressed: onTap, icon: Icon(icon, size: 35,));
    }

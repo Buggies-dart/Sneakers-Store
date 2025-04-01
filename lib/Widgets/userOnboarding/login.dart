@@ -11,22 +11,27 @@ class Login extends StatefulWidget {
   State<Login> createState() => _SignupState();
 }
  bool isLoading = false;
+ bool obscureText = true;
+ 
 final TextEditingController controllerUserName = TextEditingController();
-  final TextEditingController controllerPassword = TextEditingController();
+final TextEditingController controllerPassword = TextEditingController();
 class _SignupState extends State<Login> {
 final userLogin =    FirebaseAuthMethods(FirebaseAuth.instance);
 void googleSignIn() async{
   await FirebaseAuthMethods(FirebaseAuth.instance).signInWithGoogle(context);
 }
-  void onTap() async{
-      setState(() {
-        isLoading = true;
-      });
-     await userLogin.userSignin(password: controllerPassword.text, username: controllerUserName.text, context: context);
+
+void onTap() async{
+setState(() {
+isLoading = true;
+});
+await userLogin.userSignin(password: controllerPassword.text, username: controllerUserName.text, context: context);
  setState(() {
-   isLoading = false;
+isLoading = false;
  });    
   }
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(  backgroundColor: const Color.fromARGB(255, 245, 243, 243),
@@ -112,17 +117,25 @@ void googleSignIn() async{
     );
   }
 
-  Widget signupFields(String data, TextEditingController controller) {
-    return Padding( padding: const EdgeInsets.only( right: 30, left: 30, bottom: 15),
-      child: TextField( controller: controller,
-          decoration: InputDecoration( filled: true, fillColor: Colors.white,
-           hintText: data, contentPadding: const EdgeInsets.all(12),
-           focusedBorder: const OutlineInputBorder( borderSide: BorderSide.none),
-           border: const OutlineInputBorder( borderSide: BorderSide.none)
-          ),
-        ),
-    );
+Widget signupFields(String data, TextEditingController controller) {
+bool isPassword = data == 'Password';
+
+return Padding( padding: const EdgeInsets.only( right: 30, left: 30, bottom: 15),
+child: TextField( controller: controller, obscureText: isPassword? obscureText : false,
+decoration: InputDecoration( filled: true, fillColor: Colors.white, 
+suffixIcon: isPassword? IconButton(onPressed: (){
+setState(() {
+obscureText = !obscureText;
+});
+}, icon:  Icon( obscureText == true ? Icons.visibility_off: Icons.visibility)): null,
+hintText: data, contentPadding: const EdgeInsets.all(12), 
+focusedBorder: const OutlineInputBorder( borderSide: BorderSide.none),
+border: const OutlineInputBorder( borderSide: BorderSide.none)
+),
+),
+);
   }
+
   Widget smSignupIcon(IconData icon, VoidCallback onTap){
     return IconButton(onPressed: onTap, icon: Icon(icon, size: 35,));
   }
