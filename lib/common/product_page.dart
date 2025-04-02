@@ -26,18 +26,17 @@ class _ProductPageState extends ConsumerState<ProductPage> {
   }  
   void addToCart() {
    
-    if (_selectedSizeIndex == -1) {
+if (_selectedSizeIndex == -1) {
       // If no size is selected, show a warning snackbar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.grey[200],
-          content: const Row(
-            children: [
-              Icon(Icons.warning, color: Colors.red),
-              SizedBox(width: 10),
-              Text(
-                'Please Select a Size',
-                style: TextStyle(color: Colors.black87),
+ScaffoldMessenger.of(context).showSnackBar(
+SnackBar( backgroundColor: Colors.grey[200],
+content: const Row(
+children: [
+Icon(Icons.warning, color: Colors.red),
+SizedBox(width: 10),
+Text(
+ 'Please Select a Size',
+ style: TextStyle(color: Colors.black87),
               )
             ],
           ),
@@ -90,7 +89,7 @@ class _ProductPageState extends ConsumerState<ProductPage> {
     final querySize = MediaQuery.of(context).size;
     final productInfo = widget.indices;
     return Scaffold( backgroundColor: Colors.grey[300],
-      appBar: AppBar( 
+      appBar: AppBar( leading: IconButton(onPressed: ()=> Navigator.pop(context), icon: const Icon(Icons.arrow_back_ios),),
         title: Text('Details', style: Theme.of(context).textTheme.headlineLarge),
         centerTitle: true,
         backgroundColor: Colors.grey[300],

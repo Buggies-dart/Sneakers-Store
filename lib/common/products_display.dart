@@ -25,8 +25,8 @@ final List<Widget> contentWidgets = [
     
   ];
  return Column( children: [
-  SingleChildScrollView(  scrollDirection: Axis.horizontal,
-    child: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+SingleChildScrollView(  scrollDirection: Axis.horizontal,
+ child: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
      children: List.generate(_buttonLabels.length, (index){
       return Padding(
         padding: const EdgeInsets.only(left: 5, right: 5),
@@ -34,8 +34,8 @@ final List<Widget> contentWidgets = [
         _currentIndex == index? Colors.blue[400] : null),
           onPressed: (){
             setState(() {
-                      _currentIndex = index; 
-                    });
+_currentIndex = index; 
+});
         }, child:  Text(_buttonLabels[index], style: const TextStyle(
           color: Colors.black
         ),),),

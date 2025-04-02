@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -13,6 +15,8 @@ class ProductCard extends ConsumerStatefulWidget {
 }
 
 class _ProductCardwidgetState extends ConsumerState<ProductCard> {
+List<Map<String, dynamic>> randomItems = (List<Map<String, dynamic>>.from(products)..shuffle(Random())).take(6).toList();
+
   @override
   Widget build(BuildContext context) {
 final provider = ref.watch(myNotifProvider);
@@ -23,8 +27,8 @@ Expanded(
 child: GridView.builder(
 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
 crossAxisCount: 2,),
-itemCount: 5, scrollDirection: Axis.vertical, padding: const EdgeInsets.all(10),itemBuilder: (context, index) {
-final shoeProducts = products[index];
+itemCount: randomItems.length, scrollDirection: Axis.vertical, padding: const EdgeInsets.all(10),itemBuilder: (context, index) {
+final shoeProducts = randomItems[index];
 
 return GestureDetector(onTap: () {Navigator.push( context,
 MaterialPageRoute( builder: (context) {
