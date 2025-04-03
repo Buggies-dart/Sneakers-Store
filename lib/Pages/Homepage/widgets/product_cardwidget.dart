@@ -23,8 +23,8 @@ final provider = ref.watch(myNotifProvider);
 final querySize = MediaQuery.of(context).size;
 return Column(
 children: [
-Expanded(
-child: GridView.builder(
+SizedBox(  height: 650,
+child: GridView.builder( shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
 crossAxisCount: 2,),
 itemCount: randomItems.length, scrollDirection: Axis.vertical, padding: const EdgeInsets.all(10),itemBuilder: (context, index) {

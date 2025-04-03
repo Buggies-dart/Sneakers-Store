@@ -61,7 +61,7 @@ ThemeData darkTheme = ThemeData(
 return MaterialApp( title: 'Buggies FootWear Store', debugShowCheckedModeBanner: false,
     theme: lightTheme,
     darkTheme: darkTheme,
-     themeMode: ThemeMode.system,
+     themeMode: ThemeMode.light,
       home: const SplashScreen()
     );
   }

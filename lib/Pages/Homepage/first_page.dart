@@ -26,22 +26,25 @@ actions: [
 IconButton(onPressed: () {}, icon: const Icon(Icons.notifications))
 ],
 ),
-body: Padding(
-padding: const EdgeInsets.only(top: 10),
-child: Column(children: [
-Padding( padding: const EdgeInsets.all(8.0),
-child: CupertinoSearchTextField( decoration: BoxDecoration( color: Colors.white70,
-borderRadius: BorderRadius.circular(25),
-border: Border.all(width: 1, color: Colors.black)),
-),
-),
-const HeroSection(),
-sectionTitle(context, 'Special for you', (){}),
-const SpecialOffers(),
-const SizedBox(height: 10),
-sectionTitle(context, 'Categories', (){}),
-const Expanded(child: ProductsDisplay())
-]),
+body: SingleChildScrollView( scrollDirection: Axis.vertical,
+  child: Padding(
+  padding: const EdgeInsets.only(top: 10),
+  child: Column(children: [
+  Padding( padding: const EdgeInsets.all(8.0),
+  child: CupertinoSearchTextField( decoration: BoxDecoration( color: Colors.white70,
+  borderRadius: BorderRadius.circular(25),
+  border: Border.all(width: 1, color: Colors.black)),
+  ),
+  ),
+  const HeroSection(),
+  sectionTitle(context, 'Special for you', (){}),
+  const SpecialOffers(),
+  const SizedBox(height: 10),
+  sectionTitle(context, 'Categories', (){}),
+  const SizedBox( height: 700,
+    child:  ProductsDisplay())
+  ]),
+  ),
 ),
 );
   }

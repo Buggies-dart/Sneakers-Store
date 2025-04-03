@@ -38,61 +38,63 @@ class _SignupState extends State<Signup> {
   }
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(  backgroundColor: const Color.fromARGB(255, 245, 243, 243),
-      body: isLoading == true? const Center(
-     child: CircularProgressIndicator.adaptive(),
-      ):
-      SafeArea( 
-        child: 
-      Column( 
-       children: [
-        const SizedBox( height: 50,),
-       const Text('Sign Up', style: TextStyle( fontWeight: FontWeight.bold,
-        fontSize: 30, color: Colors.black)
-       ),
-        const SizedBox( height: 20,),
-        signupFields('Email', controllerMail),
-        signupFields('Username', controllerUserName),
-        signupFields('Password', controllerPassword),
-        const SizedBox( height: 50,),
-         Padding(
-           padding: const EdgeInsets.only(left: 25, right: 25),
-           child: ElevatedButton( style: ElevatedButton.styleFrom( backgroundColor: Colors.blue[400],
-           minimumSize: const Size(double.infinity, 50),
-           padding: const EdgeInsets.only(top: 15, bottom: 15),
-           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(10),
-           bottom: Radius.circular(10))
-           )
-           )
-           , 
-            onPressed: onTap, child: const Text('Sign Up',
-                   style: TextStyle( fontWeight: FontWeight.bold,
-                   fontSize: 20, color: Colors.white), 
-                   ),
-                   ),
-         ),
-         const SizedBox( height: 20),
-      const Row(
+return  Scaffold(  backgroundColor: const Color.fromARGB(255, 245, 243, 243),
+body:
+SafeArea( 
+child: 
+Column( 
+children: [
+const SizedBox( height: 50,),
+const Text('Sign Up', style: TextStyle( fontWeight: FontWeight.bold,
+fontSize: 30, color: Colors.black)
+),
+const SizedBox( height: 20,),
+signupFields('Email', controllerMail),
+signupFields('Username', controllerUserName),
+signupFields('Password', controllerPassword),
+const SizedBox( height: 50,),
+Padding(
+padding: const EdgeInsets.only(left: 25, right: 25),
+child: ElevatedButton( style: ElevatedButton.styleFrom( backgroundColor: Colors.blue[400],
+minimumSize: const Size(double.infinity, 50),
+padding: const EdgeInsets.only(top: 15, bottom: 15),
+shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(10),
+bottom: Radius.circular(10))
+)
+)
+, 
+onPressed: onTap, child:  isLoading == false? const Text('Sign Up',
+style: TextStyle( fontWeight: FontWeight.bold,
+fontSize: 20, color: Colors.white), 
+) : 
+
+const Row( mainAxisAlignment: MainAxisAlignment.center,
+children: [
+Text('Loading..', style: TextStyle(fontWeight: FontWeight.bold,
+fontSize: 20, color: Colors.white),), 
+SizedBox(width: 5),
+SizedBox( width: 15, height: 15,
+child: CircularProgressIndicator.adaptive( strokeWidth: 1, backgroundColor: Colors.white60, valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+  ),
+)
+  ],),),
+),
+const SizedBox( height: 20),
+const Row(
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
-    Flexible(
-      child: Padding(
-        padding:  EdgeInsets.only(left: 30.0, right: 10), 
-        child: Divider(
-          thickness: 1,
-          color: Colors.black,
-        ),
-      ),
-    ),
-    Text('or'),
-    Flexible(
-      child: Padding(
-        padding:  EdgeInsets.only(right: 30.0, left: 10),
-        child: Divider(
-          thickness: 1,
-          color: Colors.black,
-        ),
-      ),
+Flexible(
+child: Padding(
+padding:  EdgeInsets.only(left: 30.0, right: 10), 
+child: Divider( thickness: 1, color: Colors.black,),
+),
+ ),
+Text('or'),
+Flexible(
+child: Padding( padding:  EdgeInsets.only(right: 30.0, left: 10),
+child: Divider( thickness: 1, color: Colors.black,
+),
+ ),
     ),
   ],
 ),

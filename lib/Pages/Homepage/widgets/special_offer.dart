@@ -10,18 +10,12 @@ class SpecialOffers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Padding(
-        //   padding: const EdgeInsets.symmetric(horizontal: 20),
-        //   child: SectionTitle(
-        //     title: "Special for you",
-        //     press: () {},
-        //   ),
-        // ),
+       
 SingleChildScrollView(
 scrollDirection: Axis.horizontal,
 child: Row(
 children: [
-SpecialOfferCard( image: "images/footwears/327.png", category: "Running",
+SpecialOfferCard( image: "images/footwears/run.png", category: "Running",
 numOfBrands: 7,
 press: () {},
 ),
@@ -68,13 +62,15 @@ width: 242, height: 100,
 child: ClipRRect( borderRadius: BorderRadius.circular(20),
 child: Stack(
 children: [
-Image.asset(
-image,
-fit: BoxFit.cover,
+Container( width: 242, color: null,
+  child: Image.asset(
+  image,
+  fit: BoxFit.cover,
+  ),
 ),
 Container(
-decoration: const BoxDecoration(
-gradient: LinearGradient( begin: Alignment.topCenter, end: Alignment.bottomCenter,
+decoration:  const BoxDecoration( 
+gradient:  LinearGradient( begin: Alignment.topCenter, end: Alignment.bottomCenter,
 colors: [Colors.black54,Colors.black38, Colors.black26, Colors.transparent,],
 ),
 ),

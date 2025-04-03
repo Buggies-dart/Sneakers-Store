@@ -22,10 +22,10 @@ final querySize = MediaQuery.of(context).size;
 List<Map<String, dynamic>> allProducts = products.where((product) {
 return product['brand'] == widget.selectedBrand;
   }).toList();
-   return Column(
-      children: [
-        Expanded(
-child: GridView.builder(
+return Column(
+children: [
+SizedBox( height: 650,
+child: GridView.builder( shrinkWrap: true, physics: const NeverScrollableScrollPhysics(),
 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
 crossAxisCount: 2,),
 itemCount: 5, scrollDirection: Axis.vertical, padding: const EdgeInsets.all(10),itemBuilder: (context, index) {
@@ -73,7 +73,7 @@ const SizedBox(height: 5),
 Positioned( top: -16, right: 3,
 child: Consumer(builder: (context, ref, child) {
 
-return Padding( padding: const EdgeInsets.only(top: 10), // Positioned at the top-right corner
+return Padding( padding: const EdgeInsets.only(top: 10),
 child: IconButton(onPressed: () {
 if (provider.wishList.contains(shoeProducts)) {
 provider.removeWishList(shoeProducts);
